@@ -1,5 +1,5 @@
 {
-  "name": "node-win-dir",
+  "name": "win-dir",
   "version": "1.0.0",
   "description": "A drop-in replacement for dir on windows when not using the shell",
   "bin": "bin/win-dir",

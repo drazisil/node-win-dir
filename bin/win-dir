@@ -2,9 +2,9 @@
 const argv = require('argv');
 const winDir = require("../lib/win-dir")
 
-var args = argv.option([
+const args = argv.option([
     {name: 'subdirectories', short: 's', type: 'boolean', description: "Search recursively though subdirectories"},
-    {name: 'file', short: 'f', type: 'path', description: "Target a specific file for uploading and disabling automatic detection of coverage files."},
+    {name: 'fileAttributes', short: 'a', type: 'string', description: "Display only files with the specified file attributes. (only D is currently supported)"},
     {name: 'env', short: 'e', type: 'string', description: "Store environment variables to help distinguish CI builds. Example: http://bit.ly/1ElohCu", example: "--env=VAR1,VAR2,VAR3"},
     {name: 'root', short: 'p', type: 'path', description: "Project root, if not current directory"},
     {name: 'gcov-root', type: 'path', description: "Project root directory when preparing gcov"},
@@ -14,8 +14,6 @@ var args = argv.option([
     {name: 'disable', short: 'X', type: 'string', description: "Disable features. Accepting `search` to disable crawling through directories, `detect` to disable detecting CI provider, `gcov` disable gcov commands"},
     {name: 'commit', short: 'c', type: 'string', description: "Commit sha, set automatically"},
     {name: 'clear', short: 'C', type: 'boolean', description: "Remove all discovered reports after uploading"},
-    {name: 'branch', short: 'b', type: 'string', description: "Branch name"},
-    {name: 'build', short: 'B', type: 'string', description: "Specify a custom build number to distinguish ci jobs, provided automatically for supported ci companies"},
     {name: 'slug', short: 'r', type: 'string', description: "Specify repository slug for Enterprise ex. owner/repo"},
     {name: 'url', short: 'u', type: 'string', description: "Your Codecov endpoint"},
     {name: 'flags', short: 'F', type: 'string', description: "Codecov Flags"},
