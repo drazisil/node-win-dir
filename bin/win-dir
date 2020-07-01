@@ -3,23 +3,9 @@ const argv = require('argv');
 const winDir = require("../lib/win-dir")
 
 const args = argv.option([
-    {name: 'subdirectories', short: 's', type: 'boolean', description: "Search recursively though subdirectories"},
-    {name: 'fileAttributes', short: 'a', type: 'string', description: "Display only files with the specified file attributes. (only D is currently supported)"},
-    {name: 'env', short: 'e', type: 'string', description: "Store environment variables to help distinguish CI builds. Example: http://bit.ly/1ElohCu", example: "--env=VAR1,VAR2,VAR3"},
-    {name: 'root', short: 'p', type: 'path', description: "Project root, if not current directory"},
-    {name: 'gcov-root', type: 'path', description: "Project root directory when preparing gcov"},
-    {name: 'gcov-glob', type: 'string', description: "Paths to ignore during gcov gathering"},
-    {name: 'gcov-exec', type: 'string', description: "gcov executable to run. Defaults to 'gcov'"},
-    {name: 'gcov-args', type: 'string', description: "extra arguments to pass to gcov"},
-    {name: 'disable', short: 'X', type: 'string', description: "Disable features. Accepting `search` to disable crawling through directories, `detect` to disable detecting CI provider, `gcov` disable gcov commands"},
-    {name: 'commit', short: 'c', type: 'string', description: "Commit sha, set automatically"},
-    {name: 'clear', short: 'C', type: 'boolean', description: "Remove all discovered reports after uploading"},
-    {name: 'slug', short: 'r', type: 'string', description: "Specify repository slug for Enterprise ex. owner/repo"},
-    {name: 'url', short: 'u', type: 'string', description: "Your Codecov endpoint"},
-    {name: 'flags', short: 'F', type: 'string', description: "Codecov Flags"},
-    {name: 'dump', type: 'boolean', description: "Dump collected data and do not send to Codecov"},
-    {name: 'pipe', short: 'l', type: 'boolean', description: "Listen to stdin for coverage data"},
-    {name: 'yml', short: 'y', type: 'string', description: "Configuration file Used to specify the location of the .codecov.yml config file. Defaults to codecov.yml and .codecov.yml"},
+    {name: 'subdirectories', short: 's', type: 'boolean', description: "Search recursively though subdirectories (default: false)"},
+    {name: 'hideDirectories', short: 'd', type: 'boolean', description: "Hide directory names (default: false)"},
+    {name: 'excludeGlobs', short: 'g', type: 'string', description: "Exclude these globs from results (default: '')", example: "Example: -g '*/**/*.db'"},
 ]).run();
 
 if (args.options.pipe) {
